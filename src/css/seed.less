@@ -1,0 +1,134 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+@import "seattletimes";
+@import "flexbox";
+
+body {
+  font-family: @df-sans;
+  font-size: 16px;
+}
+
+.outmost {
+  border-top: 1px solid @df-border-gray;
+  border-bottom: 1px solid @df-border-gray;
+  padding: 20px 0;
+  margin: 20px auto;
+  max-width: 630px;
+}
+
+.inner {
+  .display-flex();
+}
+
+@aspect-ratio: 10/7;
+@legend-length: 5;
+
+.title {
+  font-weight: bold;
+  font-size: 28px;
+  text-align: center;
+  padding-bottom: 5px;
+
+  @media @mobile {
+    font-size: 21px;
+  }
+}
+
+.chatter {
+  font-size: 16px;
+  line-height: 21px;
+  max-width: 630px;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.aspect-ratio-outer {
+  margin: auto;
+  position: relative;
+  .flex(3);
+
+  @media @mobile {
+    width: 100%;
+    padding: 0;
+  }
+
+  .aspect-ratio-inner {
+    padding-bottom: percentage(@aspect-ratio);
+    position: relative;
+  }
+
+  leaflet-map {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:not([ready]) {
+      display: none;
+    }
+  }
+}
+
+.tabs {
+  .flex(2);
+  margin-left: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+
+  .tab {
+    margin-bottom: 5px;
+    padding-top: 10px;
+    padding-bottom: 8px;
+    cursor: pointer;
+    background: @df-light-gray;
+
+    &:hover, &.selected {
+      background: @df-dark-gray;
+      color: white;
+    }
+  }
+}
+
+div.leaflet-popup-content{
+  margin: 10px 5px;
+  width:auto;
+  max-width:240px;
+  font-family: @df-sans;
+}
+
+div.leaflet-popup-content-wrapper {
+  border-radius: 3px;
+  max-width: 240px;
+  box-shadow: 0 1px 14px rgba(0,0,0,0.30);
+  padding: 4px 20px;
+}
+
+.popuptext {
+  text-align: center;
+}
+.number {
+  font-weight: bold;
+}
+
+.source {
+  font-family: @df-sans;
+  font-size: 11.5px;
+  padding-top: 15px;
+  color: #999;
+
+  .credit {
+    font-style: normal;
+    font-size: 95%;
+    text-transform: uppercase;
+    display: block;
+  }
+}
