@@ -5,6 +5,15 @@
 require("component-responsive-frame/child");
 require("component-leaflet-map");
 
+var lookup = {
+  "TOTAL": "All Priority 1",
+  "SUIC1": "Suicidal person",
+  "ASLTV1": "Domestic violence",
+  "BURGR1": "Residential burglary",
+  "OD1": "Drug overdose",
+  "SHOTS1": "Gunshots reported"
+}
+
 var ich = require("icanhaz");
 var data = require("./crimes.geo.json");
 
@@ -24,15 +33,20 @@ if (mapElement) {
   ich.addTemplate("popupTemplate", popupTemplate);
 
   var onEachFeature = function(feature, layer) {
-    layer.bindPopup(ich.popupTemplate({
-      number: feature.properties[crime + "_time"],
-      count: commafy(feature.properties[crime + "_count"])
-    }));
+    // var breakdown = breakdownData[feature.properties.BEAT]
+    layer.bindPopup("", {
+      minWidth: 200
+    });
+
     layer.on({
       popupopen: function(e) {
         e.popup.setContent(ich.popupTemplate({
           number: feature.properties[crime + "_time"],
-          count: commafy(feature.properties[crime + "_count"])
+          count: commafy(feature.properties[crime + "_count"]),
+          breakdown: breakdownData[feature.properties.BEAT],
+          crime: lookup[crime],
+          beat: feature.properties.BEAT,
+          color: getColor(feature.properties[crime + "_decimal"])
         }));
         focused = layer;
         layer.setStyle({ weight: 2, fillOpacity: 1 });
@@ -55,18 +69,18 @@ if (mapElement) {
   });
 
   function getColor(d) {
-    return d >= 12 ? '#990000' :
-           d >= 11 ? '#d7301f' :
-           d >= 10 ? '#ef6548' :
-           d >= 9 ? '#fc8d59' :
-           d >= 8 ? '#fdbb84' :
-           d >= 7  ? '#fdd49e' :
-           d >= 6 ? '#d0d1e6' :
-           d >= 5 ? '#a6bddb' :
-           d >= 4 ? '#74a9cf' :
-           d >= 3 ? '#3690c0' :
-           d >= 2 ? '#0570b0' :
-           '#034e7b' ;
+    return d >= 12 ? '#8B261C' :
+           d >= 11 ? '#D74A28' :
+           d >= 10 ? '#DD703A' :
+           d >= 9 ? '#FBAF41' :
+           d >= 8 ? '#FFD296' :
+           d >= 7  ? '#FFF0C5' :
+           d >= 6 ? '#E3F3F2' :
+           d >= 5 ? '#C4E7E6' :
+           d >= 4 ? '#7DB9B3' :
+           d >= 3 ? '#4E8B92' :
+           d >= 2 ? '#176878' :
+           '#164655' ;
   }
 
   function style(feature) {

@@ -11,14 +11,12 @@
 
     <responsive-child class="map">
       <div class="outmost">
-        <div class="title">Lorem ipsum</div>
-        <div class="chatter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu velit iaculis, tempor est vel, ultricies ex. Vivamus euismod tortor mollis blandit laoreet.</div>
 
         <div class="inner">
           <div class="aspect-ratio-outer">
             <div class="aspect-ratio-inner">
               <leaflet-map lat="47.615" lng="-122.34" zoom=11>
-                <tile-layer layer="cartoPositron"></tile-layer>
+                <tile-layer layer="esriDarkGray"></tile-layer>
               </leaflet-map>
             </div>
 
@@ -28,24 +26,38 @@
           </div>
 
           <div class="tabs">
-            <div class="tab selected" data-crime="TOTAL">All Priority 1</div>
 
-            <div class="tab" data-crime="SUIC1">Suicidal person</div>
-            <div class="tab" data-crime="ASLTV1">Domestic violence</div>
-            <div class="tab" data-crime="BURGR1">Residential burglary</div>
-            <div class="tab" data-crime="OD1">Drug overdose</div>
-            <div class="tab" data-crime="SHOTS1">Gunshots reported</div>
+            <div class="title">Lorem ipsum</div>
+            <div class="chatter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu velit iaculis, tempor est vel, ultricies ex. Vivamus euismod tortor mollis blandit laoreet.</div>
 
+            <div class="tab-container">
+              <div class="tab selected" data-crime="TOTAL">All Priority 1</div>
+
+              <div class="tab" data-crime="SUIC1">Suicidal person</div>
+              <div class="tab" data-crime="ASLTV1">Domestic violence</div>
+              <div class="tab" data-crime="BURGR1">Residential burglary</div>
+              <div class="tab" data-crime="OD1">Drug overdose</div>
+              <div class="tab" data-crime="SHOTS1">Gunshots reported</div>
+            </div>
           </div>
         </div>
 
         <div class="source">
-          <em>Source: XXX</em>
+          <em>Source: Seattle Police Department</em>
           <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
         </div>
       </div>
     </responsive-child>
 
+    <script>
+      <%
+        var data = {};
+        csv.breakdown.forEach(function(row) {
+          data[row.Row] = row;
+        });
+      %>
+      var breakdownData = <%= JSON.stringify(data) %>;
+    </script>
     <script src="app.js" async></script>
     <% if (json.project.production) { %>
     <%= !json.project.embedded ? t.include("partials/_foot.html") : "" %>
