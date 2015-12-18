@@ -5,6 +5,8 @@
 require("component-responsive-frame/child");
 require("component-leaflet-map");
 
+console.log(breakdownData)
+
 var lookup = {
   "TOTAL": "All Priority 1",
   "SUIC1": "Suicidal person",
@@ -43,8 +45,13 @@ if (mapElement) {
         e.popup.setContent(ich.popupTemplate({
           number: feature.properties[crime + "_time"],
           count: commafy(feature.properties[crime + "_count"]),
-          breakdown: breakdownData[feature.properties.BEAT],
+          breakdown0: breakdownData[feature.properties.BEAT][crime + "_0"],
+          breakdown1: breakdownData[feature.properties.BEAT][crime + "_7"],
+          breakdown2: breakdownData[feature.properties.BEAT][crime + "_10"],
+          breakdown3: breakdownData[feature.properties.BEAT][crime + "_20"],
+          breakdown4: breakdownData[feature.properties.BEAT][crime + "_30"],
           crime: lookup[crime],
+          crimeCode: crime,
           beat: feature.properties.BEAT,
           color: getColor(feature.properties[crime + "_decimal"])
         }));
