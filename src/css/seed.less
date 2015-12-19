@@ -23,6 +23,10 @@ body {
 
 .inner {
   .display-flex();
+
+  @media @mobile {
+    display: block;
+  }
 }
 
 @aspect-ratio: 10/7;
@@ -36,6 +40,7 @@ body {
 
   @media @mobile {
     font-size: 21px;
+    padding-left: 0;
   }
 }
 
@@ -46,6 +51,11 @@ body {
   margin: auto;
   padding-bottom: 20px;
   padding-left: 10px;
+
+  @media @mobile {
+    padding-left: 0;
+    padding-bottom: 10px;
+  }
 }
 
 .aspect-ratio-outer {
@@ -78,13 +88,24 @@ body {
 
 .tabs {
   .flex(2);
-  margin-left: 5px;
+  margin-left: 20px;
+  position: relative;
+
+  @media @mobile {
+    padding-top: 10px;
+    margin-left: 0;
+  }
 
   .tab-container {
     text-align: center;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
+  }
+
+  .select {
+    padding-bottom: 6px;
+    color: #8B261C;
   }
 
   .tab {
@@ -95,10 +116,14 @@ body {
     background: @df-light-gray;
 
     &:hover, &.selected {
-      background: @df-dark-gray;
+      background: @df-charcoal;
       color: white;
     }
   }
+}
+
+.leaflet-tile-pane {
+  opacity: 0.75 !important;
 }
 
 div.leaflet-popup-content{
@@ -120,6 +145,14 @@ div.leaflet-popup-content-wrapper {
   font-size: 11.5px;
   padding-top: 15px;
   color: #999;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  @media @mobile {
+    position: relative;
+  }
 
   .credit {
     font-style: normal;
@@ -175,5 +208,58 @@ div.leaflet-popup-content-wrapper {
   vertical-align: top;
   font-weight: bold;
   line-height: 16px;
+}
+
+.legend-label {
+  padding-top: 20px;
+  font-size: 13px;
+
+  @media @mobile {
+    display: none;
+  }
+}
+
+.legend {
+  padding-top: 5px;
+  .display-flex;
+
+  @media @mobile {
+    display: none;
+  }
+}
+.swatch {
+  .flex(1);
+  height: 10px;
+
+  .number {
+    white-space: nowrap;
+    font-weight: normal;
+    font-size: 12px;
+    padding-top: 14px;
+    font-weight: bold;
+
+    &.center {
+      padding-left: calc(100% - 13px);
+    }
+  }
+}
+
+.mobile.legend-label, {
+  display: none;
+  padding-top: 0;
+  font-weight: bold;
+
+  @media @mobile {
+    display: block;
+  }
+}
+
+.mobile.legend {
+  display: none;
+  padding-bottom: 30px;
+
+  @media @mobile {
+    .display-flex();
+  }
 }
 

@@ -12,6 +12,32 @@
     <responsive-child class="map">
       <div class="outmost">
 
+        <div class="title">Lorem ipsum</div>
+        <div class="chatter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu velit iaculis, tempor est vel, ultricies ex. Vivamus euismod tortor mollis blandit laoreet.</div>
+
+        <div class="mobile legend-label">Average response time in minutes:</div>
+        <div class="mobile legend">
+          <div class="swatch" style="background: #164655">
+            <div class="number">< 2</div>
+          </div>
+          <div class="swatch" style="background: #176878"></div>
+          <div class="swatch" style="background: #4E8B92"></div>
+          <div class="swatch" style="background: #7DB9B3"></div>
+          <div class="swatch" style="background: #C4E7E6"></div>
+          <div class="swatch" style="background: #E3F3F2">
+            <div class="number center">7</div>
+          </div>
+          <div class="swatch" style="background: #FFF0C5">
+          </div>
+          <div class="swatch" style="background: #FFD296"></div>
+          <div class="swatch" style="background: #FBAF41"></div>
+          <div class="swatch" style="background: #DD703A"></div>
+          <div class="swatch" style="background: #D74A28"></div>
+          <div class="swatch" style="background: #8B261C">
+            <div class="number">> 12</div>
+          </div>
+        </div>
+
         <div class="inner">
           <div class="aspect-ratio-outer">
             <div class="aspect-ratio-inner">
@@ -19,19 +45,13 @@
                 <tile-layer layer="esriDarkGray"></tile-layer>
               </leaflet-map>
             </div>
-
-            <aside class="legend">
-              <div class="key"></div>
-            </aside>
           </div>
 
           <div class="tabs">
 
-            <div class="title">Lorem ipsum</div>
-            <div class="chatter">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eu velit iaculis, tempor est vel, ultricies ex. Vivamus euismod tortor mollis blandit laoreet.</div>
-
             <div class="tab-container">
-              <div class="tab selected" data-crime="TOTAL">All Priority 1</div>
+              <div class="select">Select a category:</div>
+              <div class="tab selected" data-crime="TOTAL">All Priority-One reports</div>
 
               <div class="tab" data-crime="SUIC1">Suicidal person</div>
               <div class="tab" data-crime="ASLTV1">Domestic violence</div>
@@ -39,12 +59,35 @@
               <div class="tab" data-crime="OD1">Drug overdose</div>
               <div class="tab" data-crime="SHOTS1">Gunshots reported</div>
             </div>
-          </div>
-        </div>
 
-        <div class="source">
-          <em>Source: Seattle Police Department</em>
-          <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+            <div class="legend-label">Average response time in minutes:</div>
+            <div class="legend">
+              <div class="swatch" style="background: #164655">
+                <div class="number">< 2</div>
+              </div>
+              <div class="swatch" style="background: #176878"></div>
+              <div class="swatch" style="background: #4E8B92"></div>
+              <div class="swatch" style="background: #7DB9B3"></div>
+              <div class="swatch" style="background: #C4E7E6"></div>
+              <div class="swatch" style="background: #E3F3F2">
+                <div class="number center">7</div>
+              </div>
+              <div class="swatch" style="background: #FFF0C5">
+              </div>
+              <div class="swatch" style="background: #FFD296"></div>
+              <div class="swatch" style="background: #FBAF41"></div>
+              <div class="swatch" style="background: #DD703A"></div>
+              <div class="swatch" style="background: #D74A28"></div>
+              <div class="swatch" style="background: #8B261C">
+                <div class="number">> 12</div>
+              </div>
+            </div>
+
+            <div class="source">
+              <em>Source: Seattle Police Department</em>
+              <div class="credit">AUDREY CARLSEN / THE SEATTLE TIMES</div>
+            </div>
+          </div>
         </div>
       </div>
     </responsive-child>

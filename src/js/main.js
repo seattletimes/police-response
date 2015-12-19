@@ -8,7 +8,7 @@ require("component-leaflet-map");
 console.log(breakdownData)
 
 var lookup = {
-  "TOTAL": "All Priority 1",
+  "TOTAL": "All Priority-One reports",
   "SUIC1": "Suicidal person",
   "ASLTV1": "Domestic violence",
   "BURGR1": "Residential burglary",
