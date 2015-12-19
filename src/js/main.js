@@ -9,6 +9,7 @@ console.log(breakdownData)
 
 var lookup = {
   "TOTAL": "All Priority-One reports",
+  "MISSC1": "Missing child",
   "SUIC1": "Suicidal person",
   "ASLTV1": "Domestic violence",
   "BURGR1": "Residential burglary",
@@ -53,7 +54,7 @@ if (mapElement) {
           crime: lookup[crime],
           crimeCode: crime,
           beat: feature.properties.BEAT,
-          color: getColor(feature.properties[crime + "_decimal"])
+          color: getColor(feature.properties[crime + "_decimal"], feature.properties[crime + "_count"])
         }));
         focused = layer;
         layer.setStyle({ weight: 2, fillOpacity: 1 });
@@ -75,24 +76,28 @@ if (mapElement) {
     }
   });
 
-  function getColor(d) {
-    return d >= 12 ? '#8B261C' :
-           d >= 11 ? '#D74A28' :
-           d >= 10 ? '#DD703A' :
-           d >= 9 ? '#FBAF41' :
-           d >= 8 ? '#FFD296' :
-           d >= 7  ? '#FFF0C5' :
-           d >= 6 ? '#E3F3F2' :
-           d >= 5 ? '#C4E7E6' :
-           d >= 4 ? '#7DB9B3' :
-           d >= 3 ? '#4E8B92' :
-           d >= 2 ? '#176878' :
-           '#164655' ;
-  }
+  function getColor(d, c) {
+    if (c >= 10) {
+      return d >= 12 ? '#8B261C' :
+             d >= 11 ? '#D74A28' :
+             d >= 10 ? '#DD703A' :
+             d >= 9 ? '#FBAF41' :
+             d >= 8 ? '#FFD296' :
+             d >= 7  ? '#FFF0C5' :
+             d >= 6 ? '#E3F3F2' :
+             d >= 5 ? '#C4E7E6' :
+             d >= 4 ? '#7DB9B3' :
+             d >= 3 ? '#4E8B92' :
+             d >= 2 ? '#176878' :
+             '#164655' ;
+    } else {
+      return "#333"
+    }
+  };
 
   function style(feature) {
     return {
-      fillColor: getColor(feature.properties[crime + "_decimal"]),
+      fillColor: getColor(feature.properties[crime + "_decimal"], feature.properties[crime + "_count"]),
       weight: 0.5,
       opacity: 1,
       color: 'white',
