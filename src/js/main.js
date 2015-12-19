@@ -43,9 +43,11 @@ if (mapElement) {
 
     layer.on({
       popupopen: function(e) {
+        var showStats = feature.properties[crime + "_count"] > 0 ? true : undefined;
         e.popup.setContent(ich.popupTemplate({
           number: feature.properties[crime + "_time"],
-          count: commafy(feature.properties[crime + "_count"]),
+          showStats: showStats,
+          count: feature.properties[crime + "_count"],
           breakdown0: breakdownData[feature.properties.BEAT][crime + "_0"],
           breakdown1: breakdownData[feature.properties.BEAT][crime + "_7"],
           breakdown2: breakdownData[feature.properties.BEAT][crime + "_10"],
@@ -123,21 +125,6 @@ if (mapElement) {
       if (document.querySelector(".selected")) document.querySelector(".selected").classList.remove("selected");
       tab.classList.add("selected");
       crime = tab.getAttribute("data-crime");
-      // if (country == "Overall foreign-born population") {
-      //   document.querySelector(".key").innerHTML = ich.overallLegend();
-      //   countryLookup = "PercentForeignBorn";
-      // } else {
-      //   if (country == "Middle East" || country == "Philippines") {
-      //     var countryLabel = "the " + country;
-      //   } else {
-      //     var countryLabel = country;
-      //   }
-      //   document.querySelector(".key").innerHTML = ich.countryLegend({
-      //     country: countryLabel,
-      //     total: totalLookup[country]
-      //   });
-      //   countryLookup = tab.innerHTML.split(' ').join('');
-      // }
       geojson.setStyle(style);
       map.closePopup();
     })

@@ -1,10 +1,11 @@
 <div class="popuptext">
   <div class="crime"><strong>{{crime}}</strong> ({{beat}})</div>
   <div class="top-info">
-    <div class="label"><span class="number">{{number}}</span> average response time</div>
+    {{#showStats}}<div class="label"><span class="number">{{number}}</span> average response time</div>{{/showStats}}
     <div class="label"><span class="number">{{count}}</span> incidents</div>
   </div>
 
+  {{#showStats}}
   <div class="bars">
     
     <div class="group">
@@ -29,4 +30,5 @@
       <div class="bar" style="width: {{breakdown0}}%; background: {{color}};"></div><div class="percent-label">{{breakdown0}}%</div>
     </div>
   </div>
+  {{/showStats}}
 </div>

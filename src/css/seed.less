@@ -244,10 +244,39 @@ div.leaflet-popup-content-wrapper {
   }
 }
 
+.note {
+  font-size: 12px;
+  font-style: italic;
+  color: @df-dark-gray;
+  padding-top: 25px;
+
+  @media @mobile {
+    display: none;
+  }
+}
+.note-swatch {
+  margin-top: 8px;
+  height: 8px;
+  width: 10px;
+  background: #333;
+  display: inline-block;
+  margin-right: 2px;
+}
+
 .mobile.legend-label, {
   display: none;
   padding-top: 0;
   font-weight: bold;
+
+  @media @mobile {
+    display: block;
+  }
+}
+
+.mobile.note {
+  display: none;
+  padding-bottom: 10px;
+  padding-top: 0;
 
   @media @mobile {
     display: block;
