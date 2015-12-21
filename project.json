@@ -5,8 +5,8 @@
       "path": "endemic-infrastructure"
     },
     "live": {
-      "bucket": "",
-      "path": ""
+      "bucket": "projects.seattletimes.com",
+      "path": "2015/fyiguy/police-responses"
     }
   },
   "title": "",
