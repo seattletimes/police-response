@@ -10,24 +10,48 @@
     
     <div class="group">
       <div class="time-label">30+ min.</div>
-      <div class="bar" style="width: {{breakdown4}}%; background: {{color}};"></div><div class="percent-label">{{breakdown4}}%</div>
+      {{#showBreakdown4}}
+        <div class="bar" style="width: {{breakdown4}}%; background: {{color}};"></div><div class="percent-label">{{breakdown4}}%</div>
+      {{/showBreakdown4}}
+      {{^showBreakdown4}}
+        &mdash;
+      {{/showBreakdown4}}
     </div>
     <div class="group">
       <div class="time-label">20-30 min.</div>
-      <div class="bar" style="width: {{breakdown3}}%; background: {{color}};"></div><div class="percent-label">{{breakdown3}}%</div>
+      {{#showBreakdown3}}
+        <div class="bar" style="width: {{breakdown3}}%; background: {{color}};"></div><div class="percent-label">{{breakdown3}}%</div>
+      {{/showBreakdown3}}
+      {{^showBreakdown3}}
+        &mdash;
+      {{/showBreakdown3}}
     </div>
-
     <div class="group">
       <div class="time-label">10-20 min.</div>
-      <div class="bar" style="width: {{breakdown2}}%; background: {{color}};"></div><div class="percent-label">{{breakdown2}}%</div>
+      {{#showBreakdown2}}
+        <div class="bar" style="width: {{breakdown2}}%; background: {{color}};"></div><div class="percent-label">{{breakdown2}}%</div>
+      {{/showBreakdown2}}
+      {{^showBreakdown2}}
+        &mdash;
+      {{/showBreakdown2}}
     </div>
     <div class="group">
       <div class="time-label">7-10 min.</div>
-      <div class="bar" style="width: {{breakdown1}}%; background: {{color}};"></div><div class="percent-label">{{breakdown1}}%</div>
+      {{#showBreakdown1}}
+        <div class="bar" style="width: {{breakdown1}}%; background: {{color}};"></div><div class="percent-label">{{breakdown1}}%</div>
+      {{/showBreakdown1}}
+      {{^showBreakdown1}}
+        &mdash;
+      {{/showBreakdown1}}
     </div>
     <div class="group">
       <div class="time-label">0-7 min.</div>
-      <div class="bar" style="width: {{breakdown0}}%; background: {{color}};"></div><div class="percent-label">{{breakdown0}}%</div>
+      {{#showBreakdown0}}
+        <div class="bar" style="width: {{breakdown0}}%; background: {{color}};"></div><div class="percent-label">{{breakdown0}}%</div>
+      {{/showBreakdown0}}
+      {{^showBreakdown0}}
+        &mdash;
+      {{/showBreakdown0}}
     </div>
   </div>
   {{/showStats}}

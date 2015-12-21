@@ -5,8 +5,6 @@
 require("component-responsive-frame/child");
 require("component-leaflet-map");
 
-console.log(breakdownData)
-
 var lookup = {
   "TOTAL": "All Priority-One reports",
   "MISSC1": "Missing child",
@@ -21,6 +19,10 @@ var ich = require("icanhaz");
 var data = require("./crimes.geo.json");
 
 var mapElement = document.querySelector("leaflet-map");
+
+var showNumber = function(n) {
+  return n > 0 ? true : undefined;
+};
 
 if (mapElement) {
   var L = mapElement.leaflet;
@@ -43,16 +45,20 @@ if (mapElement) {
 
     layer.on({
       popupopen: function(e) {
-        var showStats = feature.properties[crime + "_count"] > 0 ? true : undefined;
         e.popup.setContent(ich.popupTemplate({
           number: feature.properties[crime + "_time"],
-          showStats: showStats,
-          count: feature.properties[crime + "_count"],
+          showStats: showNumber(feature.properties[crime + "_count"]),
+          count: commafy(feature.properties[crime + "_count"]),
           breakdown0: breakdownData[feature.properties.BEAT][crime + "_0"],
           breakdown1: breakdownData[feature.properties.BEAT][crime + "_7"],
           breakdown2: breakdownData[feature.properties.BEAT][crime + "_10"],
           breakdown3: breakdownData[feature.properties.BEAT][crime + "_20"],
           breakdown4: breakdownData[feature.properties.BEAT][crime + "_30"],
+          showBreakdown0: showNumber(breakdownData[feature.properties.BEAT][crime + "_0"]),
+          showBreakdown1: showNumber(breakdownData[feature.properties.BEAT][crime + "_7"]),
+          showBreakdown2: showNumber(breakdownData[feature.properties.BEAT][crime + "_10"]),
+          showBreakdown3: showNumber(breakdownData[feature.properties.BEAT][crime + "_20"]),
+          showBreakdown4: showNumber(breakdownData[feature.properties.BEAT][crime + "_30"]),
           crime: lookup[crime],
           crimeCode: crime,
           beat: feature.properties.BEAT,
